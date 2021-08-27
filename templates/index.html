@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<httml lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="color:blue">
+    <form action ="{{ url_for('predict') }}" method="post">
+        <h2 style="color: black;">BackOrder Prediction</h2>
+        <h3 style="color: black;"> What is the current Inventory level of the product?</h3><br>
+        <input id="one" name="national_inv" type= "number" required="required">
+        <h3 style="color: black;">Enter Transit Time of the product?</h3><br>
+        <input id="two"  name="lead_time" type= "number" required="required">
+        <h3 style="color: black;">How much quantity is in transit</h3><br>
+        <input id="three"  name="in_transit_qty" type="number" required="required">
+        <h3 style="color: black;"> What is the forecast of next 3 months?</h3><br>
+        <input id="four" name="forecast_3_month" type="number" required="required">
+        <h3 style="color: black;">What is the forecast of next 6 months?</h3><br>
+        <input id="five" name="forecast_6_month" type="number" required="required">
+        <h3 style="color: black;"> What is the forecast of next 9 months?</h3><br>
+        <input id="six" name="forecast_9_month" type="number" required="required">
+        <h3 style="color: black;">What is the sales of last 1 months?</h3><br>
+        <input id="seven" name="sales_1_month" type="number" required="required">
+        <h3 style="color: black;">What is the sales of last 3 months?</h3><br>
+        <input id="eight" name="sales_3_month" type="number" required="required">
+        <h3 style="color: black;">What is the sales of last 6 months?</h3><br>
+        <input id="nine" name="sales_6_month" type="number" required="required">
+        <h3 style="color: black;">What is the sales of last 9 months?</h3><br>
+        <input id="ten" name="sales_9_month" type="number" required="required">
+        <h3 style="color: black;">How much Minimum amount of stock is recommended?</h3><br>
+        <input id="eleven" name="min_bank" type="number" required="required">
+        <h3 style="color: black;">Is there any potential issue?</h3><br>
+        <select id="twelve" name="potential_issue" type="bool" required="required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <h3 style="color: black;">Parts overdue from source</h3><br>
+        <input id="thirteen" name="pieces_past_due" type="number" required="required">
+        <h3 style="color: black;">Source performance in last 6 months?</h3><br>
+        <input id="fourteen" name="perf_6_month_avg" type="number" required="required">
+        <h3 style="color: black;">Source performance in last 12 months?</h3><br>
+        <input id="fifteen" name="perf_12_month_avg" type="number" required="required">
+        <h3 style="color: black;">Amount of stock overdue?</h3><br>
+        <input id="sixteen" name="local_bo_qty" type="number" required="required">
+        <h3 style="color: black;">Any Deck risk involved?</h3><br>
+        <select id="seventeen" name="deck_risk" type="bool" required="required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <h3 style="color: black;">Any OE constraint involved?</h3><br>
+        <select id="eighteen"  name="oe_constraint" type="bool" required="required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <h3 style="color: black;">Any PPAP risk involved?</h3><br>
+        <select id="ninteen" name="ppap_risk" type="bool" required="required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <h3 style="color: black;"> Stop Auto buy option active?</h3><br>
+        <select id= "twenty" name="stop_auto_buy" type="bool" required="required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <h3 style="color: black;">Rev Stop Active?</h3>
+        <select id="twentyone"  name="rev_stop" type="bool" required="required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <br><br><button id="sub" type="submit">Will the Product went on Backorder?</button>
+        <br>
+
+
+
+    </form>
+    
+    </div>
+
+    <style>
+        body {
+            background-color: rgb(197, 197, 197);
+            text-align: center;
+            color: black;
+            padding: 0px;
+        }
+
+        #research {
+            font-size: 60px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 140px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 14px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 140px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 140px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 80%;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+
+        #one {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #two {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #three {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #four {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+
+        #five {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #six {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #seven {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #eight{
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+
+        #nine {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #ten {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #eleven {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #twelve {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+
+        #thirteen {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #fourteen{
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #fifteen {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #sixteen {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+
+        #seventeen {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #eighteen {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #ninteen {
+
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #twenty{
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+        #twentyone{
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #3CBC8D;
+            color: white;
+        }
+        
+
+
+
+
+    </style>
+</body>
+</httml>
