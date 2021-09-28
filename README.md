@@ -73,3 +73,7 @@ Because if feature values have high correlation values then it is redundant to k
 
 
 Forecast_3_month, forecast_6_month,forecast_9_month are highly correlated to one another. In_transit_qty,sales_3_month and min_bank are correlated to each other. sales_1_month,sales_3_month,sales_6_month and sales_9_month are highly correlated. perf_6_month_avg,perf_12_month_avg are highly correlated to each other.
+So we can use Feature engeneering in order to remove the multicolliniearity in our dataset.
+
+![4](https://user-images.githubusercontent.com/41980059/135072681-5a5d81ab-ac58-4a9a-9e63-7f642ec7a6e3.png)
+
