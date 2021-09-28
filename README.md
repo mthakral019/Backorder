@@ -88,7 +88,8 @@ Since recall value is the most important metric for the given statement and easy
 ![4](https://user-images.githubusercontent.com/41980059/135075647-0ae5a797-b4be-4ef5-a62f-baf2ef51f140.png)
 
 
-
+## Deployment on Flask Server:
+After completing the Model deployemnt a simple user-interface was created to make whole process understandable to anyone by entering all the values of features that we have used from the dataset. Since it's not easy feasible for stakeholders to understand a process in technical terms so even a simple user can be very helpful to make them understand the wrokflow of total process.
 
 https://user-images.githubusercontent.com/41980059/135076459-fcfb5c3f-7e78-4c7a-9549-c165affaaea5.mp4
 
