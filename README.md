@@ -77,3 +77,11 @@ So we can use Feature engeneering in order to remove the multicolliniearity in o
 
 ![4](https://user-images.githubusercontent.com/41980059/135072681-5a5d81ab-ac58-4a9a-9e63-7f642ec7a6e3.png)
 
+## Feature Scaling :
+Since the features in our dataset have different different scales. So, one particular fetaure can affect our final value more than other features. In order to stop this to happen we use Standard Scaler which basically sclaes the feartures at the same lvel so that all features have same weightage.
+
+## Modelling :
+Since our dataset is highly imbalanced there are various ML models which can handle the imbalance nature of dataset by itself without the need of any other data cleaning process. Such ML models are like KNN classifier, Bagging Classifier, Balanced bagging Classifier, Random Forest Classifier, Random Forest Classifier with weights, Easy Ensemble Classifier, Gradient Boosting Classifier.
+
+Since recall value is the most important metric for the given statement and easyensembleclassifier was the one with the best recall value of 85%. 
+![4](https://user-images.githubusercontent.com/41980059/135075647-0ae5a797-b4be-4ef5-a62f-baf2ef51f140.png)
